@@ -1,12 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import React from "react";
+import GlobalStyles from "../../styles/GlobalStyles";
 
 export default function Login() {
-  return (
-    <View>
-      <Text>Login</Text>
-    </View>
-  )
+	return (
+		<SafeAreaView style={GlobalStyles.container}>
+			<Text>Fuk</Text>
+		</SafeAreaView>
+	);
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

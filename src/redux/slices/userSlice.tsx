@@ -10,7 +10,7 @@ const initialState: UserState = {
 	user: {
 		_id: "",
 		fullName: "",
-		dateOfBirth: "",
+		dateOfBirth: new Date(),
 		phoneNumber: "",
 		email: "",
 		occupation: "",

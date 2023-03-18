@@ -10,37 +10,36 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { NavigationStackProp } from "react-navigation-stack";
-import GlobalStyles from "../../styles/GlobalStyles";
-import TouchableButton from "../../components/buttons/TouchableButton";
-import OTP from "../../components/inputs/OTP";
-import Input from "../../components/inputs/Input";
-import { useUser } from "../../redux/hooks/useUser";
+import GlobalStyles from "../../../styles/GlobalStyles";
+import TouchableButton from "../../../components/buttons/TouchableButton";
+import OTP from "../../../components/inputs/OTP";
+import { useUser } from "../../../redux/hooks/useUser";
 
-export default function Login({
+export default function VerifyCode({
 	navigation,
 }: {
 	navigation: NavigationStackProp;
 }) {
-	const { user, login } = useUser();
-	const [password, setPassword] = useState<string>("");
+	const { user } = useUser();
+	const [code, setCode] = useState<string>("");
 
 	function nextScreen() {
 		navigation.navigate("CreatePassword");
-	}
-
-	function Login() {
-		login(user.phoneNumber, password);
 	}
 
 	function goBack() {
 		navigation.goBack();
 	}
 
+	function onCodeChanged(code: string) {
+		setCode(code);
+	}
+
 	return (
 		<TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
 			<SafeAreaView style={styles.container}>
 				<View style={styles.titleContainer}>
-					<Text style={GlobalStyles.title}>Welcome</Text>
+					<Text style={GlobalStyles.title}>Enter verification code</Text>
 					<Text
 						style={{
 							...GlobalStyles.subtitle,
@@ -48,37 +47,25 @@ export default function Login({
 							textAlign: "center",
 						}}
 					>
-						{user.fullName}
-					</Text>
-					<Text
-						style={{
-							...GlobalStyles.subtitle,
-							textAlign: "center",
-						}}
-					>
-						( {user.phoneNumber} )
+						We have sent an OTP code to the phone number {user.phoneNumber}
 					</Text>
 				</View>
 				<View style={styles.bodyContainer}>
-					<Input
-						style={{ width: "100%" }}
-						value={password}
-						onChangeText={setPassword}
-						placeholder="Enter your password"
-						keyboardType="default"
-						isError={password.length > 0 && password.length < 8}
-						errorMsg="Password must be at least 8 characters"
-					/>
+					<OTP onCodeChanged={onCodeChanged} />
+					<Text
+						style={{ ...GlobalStyles.subtitle, fontSize: 16, marginTop: 20 }}
+					>
+						Resend verification code
+					</Text>
+					<Button title="Edit phone number" onPress={goBack} />
 				</View>
 				<View style={styles.buttonContainer}>
 					<TouchableButton
-						disabled={password.length < 8}
+						disabled={code.length < 6}
 						style={styles.button}
-						text="LOGIN"
-						onPress={Login}
+						text="NEXT"
+						onPress={nextScreen}
 					/>
-					<Button title="Forgot password?" onPress={goBack} />
-					<Button title="Sign out" color="black" onPress={goBack} />
 				</View>
 			</SafeAreaView>
 		</TouchableWithoutFeedback>
@@ -117,7 +104,6 @@ const styles = StyleSheet.create({
 	button: {
 		marginLeft: "auto",
 		marginTop: 20,
-		marginBottom: 15,
-		width: "100%",
+		width: 100,
 	},
 });

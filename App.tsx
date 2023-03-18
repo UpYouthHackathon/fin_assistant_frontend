@@ -29,7 +29,9 @@ import {
 	ReloadInstructions,
 } from "react-native/Libraries/NewAppScreen";
 import SplashScreen from "./src/screens/SplashScreen";
-import Signup from "./src/screens/authentication/Signup";
+import Register from "./src/screens/authentication/register/Register";
+import VerifyCode from "./src/screens/authentication/register/VerifyCode";
+import CreatePassword from "./src/screens/authentication/register/CreatePassword";
 import Login from "./src/screens/authentication/Login";
 
 import { store } from "./src/redux/store";
@@ -79,8 +81,18 @@ function NavigationStack() {
 					options={{ headerShown: false }}
 				/>
 				<Stack.Screen
-					name="Signup"
-					component={Signup}
+					name="Register"
+					component={Register}
+					options={{ headerShown: false }}
+				/>
+				<Stack.Screen
+					name="VerifyCode"
+					component={VerifyCode}
+					options={{ headerShown: false }}
+				/>
+				<Stack.Screen
+					name="CreatePassword"
+					component={CreatePassword}
 					options={{ headerShown: false }}
 				/>
 				<Stack.Screen
@@ -89,9 +101,6 @@ function NavigationStack() {
 					options={{ headerShown: false }}
 				/>
 			</Stack.Navigator>
-			{/* <SafeAreaView>
-        <Login />
-      </SafeAreaView> */}
 		</NavigationContainer>
 	);
 }

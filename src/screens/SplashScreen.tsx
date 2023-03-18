@@ -8,7 +8,7 @@ export default function SplashScreen({
 	navigation: NavigationStackProp;
 }) {
 	setTimeout(() => {
-		navigation.navigate("Signup");
+		navigation.navigate("Register");
 	}, 3000);
 
 	const SplashArt = require("../assets/images/splash.png");

@@ -20,17 +20,17 @@ export default StyleSheet.create({
 
 	h1: {
 		fontSize: 18,
-		fontWeight: "600",
+		fontFamily: "OpenSans-Bold",
 	},
 
 	h2: {
 		fontSize: 16,
-		fontWeight: "400",
+		fontFamily: "OpenSans-Medium",
 	},
 
 	h3: {
 		fontSize: 14,
-		fontWeight: "600",
+		fontFamily: "OpenSans-Regular",
 	},
 
 	shadow: {

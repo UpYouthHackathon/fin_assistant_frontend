@@ -16,26 +16,24 @@ export function useUser() {
 				phoneNumber,
 				password,
 			});
-			// console.log(res.data.user);
+			console.log("Login success", res.data.user);
 		} catch (err) {
 			console.log(err);
-		} finally {
-			console.log("finale");
 		}
-		// console.log("login press")
-		// dispatch(setUser({
-		//  id: "1",
-		//  fullName: "Fuk",
-		//  dateOfBirth: "Fuk",
-		//  phoneNumber: "Fuk",
-		//  email,
-		//  occupation: "Fuk",
-		//  password,
-		//  role: "Fuk",
-		// }));
 	}
+
+	async function register(user: IUser) {
+		try {
+			const res = await axios.post(postAPI().register, user);
+			console.log("Register success", res.data.user);
+		} catch (err) {
+			console.log(err);
+		}
+	}
+
 	return {
 		user,
 		login,
+		register,
 	};
 }

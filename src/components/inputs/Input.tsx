@@ -15,21 +15,32 @@ export default function Input({
 	placeholder,
 	keyboardType,
 	style,
+	isError,
+	errorMsg,
 }: {
 	onChangeText: (text: string) => void;
 	value: string;
 	placeholder?: string;
 	keyboardType: KeyboardTypeOptions;
 	style?: any;
+	isError?: boolean;
+	errorMsg?: string;
 }) {
 	return (
-		<TextInput
-			style={{ ...styles.keyboard, ...style }}
-			onChangeText={onChangeText}
-			value={value}
-			placeholder={placeholder}
-			keyboardType={keyboardType}
-		/>
+		<View style={style}>
+			<TextInput
+				style={styles.keyboard}
+				onChangeText={onChangeText}
+				value={value}
+				placeholder={placeholder}
+				keyboardType={keyboardType}
+			/>
+			{isError ? (
+				<Text style={styles.error}>{errorMsg}</Text>
+			) : (
+				<Text style={styles.error}></Text>
+			)}
+		</View>
 	);
 }
 
@@ -37,9 +48,16 @@ const styles = StyleSheet.create({
 	keyboard: {
 		borderRadius: 10,
 		padding: 12,
-		// height: 42,
-		width: 100,
+		width: "100%",
 		backgroundColor: "#fff",
-		...GlobalStyles.shadow,
+		// ...GlobalStyles.shadow,
+	},
+
+	error: {
+		marginLeft: 5,
+		marginTop: 5,
+		color: "red",
+		...GlobalStyles.h3,
+		fontSize: 10,
 	},
 });

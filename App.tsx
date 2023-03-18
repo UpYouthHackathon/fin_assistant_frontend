@@ -28,7 +28,12 @@ import {
 	LearnMoreLinks,
 	ReloadInstructions,
 } from "react-native/Libraries/NewAppScreen";
+import SplashScreen from "./src/screens/SplashScreen";
+import Signup from "./src/screens/authentication/Signup";
 import Login from "./src/screens/authentication/Login";
+
+import { store } from "./src/redux/store";
+import { Provider } from "react-redux";
 
 type SectionProps = PropsWithChildren<{
 	title: string;
@@ -67,7 +72,17 @@ const Stack = createNativeStackNavigator();
 function NavigationStack() {
 	return (
 		<NavigationContainer>
-			<Stack.Navigator initialRouteName="Login">
+			<Stack.Navigator initialRouteName="Splash">
+				<Stack.Screen
+					name="Splash"
+					component={SplashScreen}
+					options={{ headerShown: false }}
+				/>
+				<Stack.Screen
+					name="Signup"
+					component={Signup}
+					options={{ headerShown: false }}
+				/>
 				<Stack.Screen
 					name="Login"
 					component={Login}
@@ -89,9 +104,11 @@ function App(): JSX.Element {
 	};
 
 	return (
-		<SafeAreaProvider>
-			<NavigationStack />
-		</SafeAreaProvider>
+		<Provider store={store}>
+			<SafeAreaProvider>
+				<NavigationStack />
+			</SafeAreaProvider>
+		</Provider>
 	);
 }
 

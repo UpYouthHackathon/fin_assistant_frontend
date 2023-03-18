@@ -66,12 +66,12 @@ const Stack = createNativeStackNavigator();
 function NavigationStack() {
   return (
     <NavigationContainer>
-      {/* <Stack.Navigator initialRouteName='Login'>
+      <Stack.Navigator initialRouteName='Login'>
         <Stack.Screen name="Login" component={Login} />
-      </Stack.Navigator> */}
-      <SafeAreaView>
+      </Stack.Navigator>
+      {/* <SafeAreaView>
         <Login />
-      </SafeAreaView>
+      </SafeAreaView> */}
     </NavigationContainer>
   );
 }

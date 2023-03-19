@@ -9,28 +9,33 @@ export default StyleSheet.create({
 
 	title: {
 		fontSize: 20,
-		fontFamily: "OpenSans-Bold",
+		// fontFamily: "OpenSans-Bold",
+		fontWeight: "600",
 	},
 
 	subtitle: {
 		fontSize: 16,
-		fontFamily: "OpenSans-Regular",
+		// fontFamily: "OpenSans-Regular",
+		fontWeight: "400",
 		color: "gray",
 	},
 
 	h1: {
 		fontSize: 18,
-		fontFamily: "OpenSans-Bold",
+		// fontFamily: "OpenSans-Bold",
+		fontWeight: "600",
 	},
 
 	h2: {
 		fontSize: 16,
-		fontFamily: "OpenSans-Medium",
+		// fontFamily: "OpenSans-Medium",
+		fontWeight: "500",
 	},
 
 	h3: {
 		fontSize: 14,
-		fontFamily: "OpenSans-Regular",
+		// fontFamily: "OpenSans-Regular",
+		fontWeight: "400",
 	},
 
 	shadow: {

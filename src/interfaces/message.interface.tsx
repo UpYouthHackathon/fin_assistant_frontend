@@ -3,4 +3,5 @@ export interface IMessage {
 	senderId: string;
 	roomId: string;
 	content: string;
+	createdAt: string;
 }

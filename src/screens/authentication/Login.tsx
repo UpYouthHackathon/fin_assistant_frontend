@@ -24,16 +24,17 @@ export default function Login({
 	const { user, login } = useUser();
 	const [password, setPassword] = useState<string>("");
 
-	function nextScreen() {
-		navigation.navigate("CreatePassword");
-	}
-
 	function Login() {
 		login(user.phoneNumber, password);
+		navigation.navigate("Root");
 	}
 
 	function goBack() {
 		navigation.goBack();
+	}
+
+	function toRegister() {
+		navigation.navigate("Register");
 	}
 
 	return (
@@ -78,7 +79,7 @@ export default function Login({
 						onPress={Login}
 					/>
 					<Button title="Forgot password?" onPress={goBack} />
-					<Button title="Sign out" color="black" onPress={goBack} />
+					<Button title="Sign out" color="black" onPress={toRegister} />
 				</View>
 			</SafeAreaView>
 		</TouchableWithoutFeedback>

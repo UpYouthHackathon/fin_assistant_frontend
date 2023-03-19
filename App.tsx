@@ -33,9 +33,13 @@ import Register from "./src/screens/authentication/register/Register";
 import VerifyCode from "./src/screens/authentication/register/VerifyCode";
 import CreatePassword from "./src/screens/authentication/register/CreatePassword";
 import Login from "./src/screens/authentication/Login";
+import Root from "./src/screens/home/Root";
+import ChatRoom from "./src/screens/chat/ChatRoom";
+import AICallScreen from "./src/screens/support/AICallScreen";
 
 import { store } from "./src/redux/store";
 import { Provider } from "react-redux";
+import SupportScreen from "./src/screens/support/SupportScreen";
 
 type SectionProps = PropsWithChildren<{
 	title: string;
@@ -98,6 +102,21 @@ function NavigationStack() {
 				<Stack.Screen
 					name="Login"
 					component={Login}
+					options={{ headerShown: false }}
+				/>
+				<Stack.Screen
+					name="Root"
+					component={Root}
+					options={{ headerShown: false }}
+				/>
+				<Stack.Screen
+					name="ChatRoom"
+					component={ChatRoom}
+					options={{ headerBackVisible: true }}
+				/>
+				<Stack.Screen
+					name="AI Call Screen"
+					component={SupportScreen}
 					options={{ headerShown: false }}
 				/>
 			</Stack.Navigator>

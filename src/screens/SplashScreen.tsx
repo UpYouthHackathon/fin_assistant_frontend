@@ -1,14 +1,25 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { NavigationStackProp } from "react-navigation-stack";
+import CookieManager from "@react-native-cookies/cookies";
 
 export default function SplashScreen({
 	navigation,
 }: {
 	navigation: NavigationStackProp;
 }) {
+	useEffect(() => {
+		CookieManager.getAll()
+			.then((cookie) => {
+				console.log(cookie);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
+
 	setTimeout(() => {
-		navigation.navigate("Register");
+		navigation.navigate("Login");
 	}, 3000);
 
 	const SplashArt = require("../assets/images/splash.png");

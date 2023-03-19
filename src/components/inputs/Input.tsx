@@ -35,11 +35,12 @@ export default function Input({
 				placeholder={placeholder}
 				keyboardType={keyboardType}
 			/>
-			{isError ? (
-				<Text style={styles.error}>{errorMsg}</Text>
-			) : (
-				<Text style={styles.error}></Text>
-			)}
+			{errorMsg &&
+				(isError ? (
+					<Text style={styles.error}>{errorMsg}</Text>
+				) : (
+					<Text style={styles.error}></Text>
+				))}
 		</View>
 	);
 }

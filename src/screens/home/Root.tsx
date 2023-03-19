@@ -90,7 +90,7 @@ export default function Root() {
 			circleWidth={60}
 			bgColor="white"
 			type="UP"
-			initialRouteName="Home"
+			initialRouteName="Chats"
 			borderTopLeftRight
 			tabBar={renderTabBar}
 			renderCircle={({ selectedTab, navigate }) => (

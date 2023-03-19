@@ -14,19 +14,15 @@ export default function SupportScreen({
 	navigation: NavigationStackProp;
 }) {
 	const [startCall, setStartCall] = useState<boolean>(false);
-	let textStack: IMessage[] = [];
+	const [textStack, setStack] = useState<IMessage[]>([]);
 
-	useEffect(() => {
-		if (startCall) {
-			let i = 0;
-			setTimeout(() => {
-				if (i < fakeData.length) {
-					textStack.push(fakeData[i]);
-					i++;
-				}
-			}, 2000);
+	let i = 0;
+	setInterval(() => {
+		if (i < fakeData.length && startCall) {
+			setStack([...textStack, fakeData[i]]);
+			i++;
 		}
-	}, [startCall]);
+	}, 2000);
 
 	return (
 		<View>
@@ -36,13 +32,15 @@ export default function SupportScreen({
 			>
 				<View style={styles.contentContainer}>
 					<Disclaimer startCall={() => setStartCall(true)} />
-					{textStack.map((val, index) =>
-						val._id === "2" ? (
-							<UserBubble content={val.content} />
-						) : (
-							<GuestBubble content={val.content} />
-						)
-					)}
+					<View style={{ marginTop: "auto" }}>
+						{textStack.map((val, index) =>
+							val._id === "2" ? (
+								<UserBubble content={val.content} />
+							) : (
+								<GuestBubble content={val.content} />
+							)
+						)}
+					</View>
 					{startCall && <CallModule />}
 				</View>
 			</ImageBackground>
